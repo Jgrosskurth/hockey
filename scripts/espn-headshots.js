@@ -1,5 +1,5 @@
-/* ESPN Headshot Swap v2 — intercepts images before NHL 404 fires */
-(function espnHeadshots() {
+/* ESPN Headshot Swap v3 */
+(function() {
   var M = {
     '8478402':'3895074','8476453':'3101234','8477492':'3041969','8484801':'5080370',
     '8476460':'2991075','8480018':'4565228','8480039':'4352819','8477956':'3899937',
@@ -28,67 +28,53 @@
     '8482667':'4917930','8479525':'4565233','8482665':'4917929'
   };
 
-  var ESPN = 'https://a.espncdn.com/combiner/i?img=/i/headshots/nhl/players/full/';
+  function espnUrl(espnId) {
+    return 'https://a.espncdn.com/i/headshots/nhl/players/full/' + espnId + '.png';
+  }
 
   function swapImg(img) {
-    var src = img.getAttribute('src') || '';
-    var match = src.match(/\/(\d{7,8})\.png/);
+    var src = img.getAttribute('src') || img.src || '';
+    if (src.indexOf('espncdn') > -1) return;
+    var match = src.match(/(\d{7,8})/);
     if (match && M[match[1]]) {
-      img.setAttribute('src', ESPN + M[match[1]] + '.png&h=96&w=96&scale=crop');
+      img.onerror = null;
       img.removeAttribute('onerror');
+      img.src = espnUrl(M[match[1]]);
       img.style.display = '';
     }
   }
 
   function swapAll() {
     document.querySelectorAll('.nhl-rankings img').forEach(swapImg);
-  }
-
-  // MutationObserver catches images as they are added to DOM
-  var observer = new MutationObserver(function(mutations) {
-    mutations.forEach(function(mut) {
-      mut.addedNodes.forEach(function(node) {
-        if (node.nodeType !== 1) return;
-        if (node.tagName === 'IMG') swapImg(node);
-        node.querySelectorAll && node.querySelectorAll('img').forEach(swapImg);
-      });
-      // Also catch src attribute changes
-      if (mut.type === 'attributes' && mut.target.tagName === 'IMG') {
-        swapImg(mut.target);
-      }
-    });
-  });
-
-  // Start observing immediately
-  observer.observe(document.documentElement, {
-    childList: true,
-    subtree: true,
-    attributes: true,
-    attributeFilter: ['src']
-  });
-
-  // Also run a sweep after block renders as a safety net
-  var attempts = 0;
-  var timer = setInterval(function() {
-    swapAll();
-    // Also unhide any images that were hidden by onerror
-    document.querySelectorAll('.nhl-rankings .player-avatar img[style*="display"]').forEach(function(img) {
-      var src = img.getAttribute('src') || '';
-      if (src.includes('espncdn')) {
-        img.style.display = '';
-      }
-    });
-    // Unhide hidden siblings too
-    document.querySelectorAll('.nhl-rankings .player-avatar .initials').forEach(function(el) {
-      var img = el.parentElement.querySelector('img');
-      if (img && img.src.includes('espncdn')) {
+    document.querySelectorAll('.nhl-rankings .initials').forEach(function(el) {
+      var img = el.parentElement && el.parentElement.querySelector('img');
+      if (img && img.src.indexOf('espncdn') > -1) {
         el.style.display = 'none';
         img.style.display = '';
       }
     });
-    if (++attempts > 30) {
-      clearInterval(timer);
-      observer.disconnect();
-    }
-  }, 300);
+  }
+
+  var obs = new MutationObserver(function(muts) {
+    muts.forEach(function(m) {
+      if (m.addedNodes) {
+        m.addedNodes.forEach(function(n) {
+          if (n.nodeType !== 1) return;
+          if (n.tagName === 'IMG') swapImg(n);
+          if (n.querySelectorAll) n.querySelectorAll('img').forEach(swapImg);
+        });
+      }
+      if (m.type === 'attributes' && m.target.tagName === 'IMG') swapImg(m.target);
+    });
+  });
+
+  obs.observe(document.documentElement, {
+    childList: true, subtree: true, attributes: true, attributeFilter: ['src']
+  });
+
+  var c = 0;
+  var t = setInterval(function() {
+    swapAll();
+    if (++c > 40) { clearInterval(t); obs.disconnect(); }
+  }, 250);
 })();
