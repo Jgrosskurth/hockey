@@ -1,195 +1,155 @@
 /*
- * NHL Rankings Block — Dynamic Edition
- * Fetches live player data + headshots from api-web.nhle.com on every page load.
- * Supports EN / FR (Canadian) based on URL path.
- *
- * Drop this file + nhl-rankings.css into:
- *   blocks/nhl-rankings/
- * in your GitHub repo.
+ * NHL Rankings Block
+ * Injects ESPN headshot images dynamically to bypass EDS image rewriting.
+ * Player ESPN IDs are mapped by name.
  */
 
-const NHL_API = 'https://api-web.nhle.com/v1';
+const ESPN_HEADSHOT = 'https://a.espncdn.com/combiner/i?img=/i/headshots/nhl/players/full/';
 
-// Matthew's Top 100 — NHL player IDs in ranked order.
-// Update this array to change rankings. IDs sourced from api-web.nhle.com.
-const TOP_100 = [
-  8478402, 8477492, 8478427, 8479318, 8479339,  // 1-5
-  8480801, 8477953, 8480069, 8478483, 8479400,  // 6-10
-  8479325, 8479323, 8477934, 8477493, 8476346,  // 11-15
-  8476453, 8476459, 8478864, 8478420, 8480012,  // 16-20
-  8479344, 8476461, 8478366, 8480800, 8475166,  // 21-25
-  8481540, 8482671, 8478463, 8477503, 8477474,  // 26-30
-  8479328, 8476462, 8479337, 8478474, 8480064,  // 31-35
-  8477956, 8481477, 8480070, 8479982, 8478445,  // 36-40
-  8480023, 8478444, 8478469, 8478475, 8479353,  // 41-45
-  8479580, 8480816, 8478882, 8478398, 8480074,  // 46-50
-  8476882, 8476470, 8479361, 8476454, 8478890,  // 51-55
-  8478476, 8477498, 8480078, 8475786, 8477946,  // 56-60
-  8480145, 8478011, 8476539, 8477937, 8481533,  // 61-65
-  8477964, 8479305, 8479420, 8479316, 8477495,  // 66-70
-  8481528, 8482109, 8477952, 8477939, 8479335,  // 71-75
-  8477404, 8480797, 8481518, 8481519, 8482113,  // 76-80
-  8477500, 8476967, 8479572, 8479407, 8480036,  // 81-85
-  8481559, 8478438, 8480002, 8480849, 8478010,  // 86-90
-  8480839, 8479327, 8480208, 8477451, 8476431,  // 91-95
-  8478439, 8480073, 8480018, 8475913, 8477435,  // 96-100
-];
-
-/* ── i18n ────────────────────────────────────────────────── */
-
-const T = {
-  en: {
-    title: "Matthew's Top 100 NHL Rankings",
-    subtitle: '2025–26 Season — Top Offensive Players',
-    rank: '#', player: 'Player', team: 'Team', pos: 'Pos',
-    gp: 'GP', g: 'G', a: 'A', pts: 'P',
-    loading: 'Loading live stats…',
-    error: 'Could not load stats. Please try again later.',
-  },
-  fr: {
-    title: 'Le Top 100 de Matthew — Classement LNH',
-    subtitle: 'Saison 2025-26 — Meilleurs joueurs offensifs',
-    rank: '#', player: 'Joueur', team: 'Équipe', pos: 'Pos',
-    gp: 'PJ', g: 'B', a: 'A', pts: 'P',
-    loading: 'Chargement des statistiques…',
-    error: 'Impossible de charger les statistiques. Veuillez réessayer.',
-  },
+// Player name -> ESPN ID mapping
+const ESPN_IDS = {
+  'Connor McDavid': 3895074,
+  'Nathan MacKinnon': 3041969,
+  'Nikita Kucherov': 3101234,
+  'Auston Matthews': 4024123,
+  'Leon Draisaitl': 3114727,
+  'Kirill Kaprizov': 4565223,
+  'David Pastrnak': 3899937,
+  'Cale Makar': 4352817,
+  'Mikko Rantanen': 3899938,
+  'Jack Hughes': 4565225,
+  'Sam Reinhart': 3114723,
+  'Mitch Marner': 3899933,
+  'Aleksander Barkov': 3041970,
+  'Matthew Tkachuk': 4024122,
+  'Sidney Crosby': 3114,
+  'Artemi Panarin': 2562602,
+  'Mark Scheifele': 2991075,
+  'Travis Konecny': 3899954,
+  'Jason Robertson': 4565226,
+  'Tim Stutzle': 4697399,
+  'William Nylander': 3899932,
+  'Jack Eichel': 3114726,
+  'Brayden Point': 3899946,
+  'Quinn Hughes': 4565224,
+  'Alex Ovechkin': 3101,
+  'Cole Caufield': 4697397,
+  'Connor Bedard': 5080373,
+  'Sebastian Aho': 3899929,
+  'Filip Forsberg': 3024816,
+  'Brady Tkachuk': 4352816,
+  'Jesper Bratt': 4233583,
+  'Kyle Connor': 3899952,
+  'Elias Pettersson': 4352815,
+  'Adrian Kempe': 3899951,
+  'Robert Thomas': 4352812,
+  'Dylan Larkin': 3899936,
+  'Lucas Raymond': 4697398,
+  'Adam Fox': 4352782,
+  'Roope Hintz': 4233585,
+  'Tage Thompson': 4233571,
+  'Rasmus Dahlin': 4352818,
+  'Clayton Keller': 4233563,
+  'Jake Guentzel': 3899939,
+  'Martin Necas': 4352819,
+  'Andrei Svechnikov': 4352814,
+  'Nick Suzuki': 4565228,
+  'Wyatt Johnston': 4917927,
+  'Zach Werenski': 3899953,
+  'Mathew Barzal': 4024126,
+  'Evan Bouchard': 4352813,
+  'Mika Zibanejad': 2991076,
+  'Vincent Trocheck': 2991079,
+  'Alex DeBrincat': 4233559,
+  'John Tavares': 5479,
+  'Joel Eriksson Ek': 4024124,
+  'Kevin Fiala': 3899956,
+  'Nikolaj Ehlers': 3114724,
+  'Dylan Cozens': 4565229,
+  'Anze Kopitar': 3445,
+  'Patrik Laine': 4024125,
+  'Josh Morrissey': 3899955,
+  'Jordan Kyrou': 4352820,
+  'J.T. Miller': 2976860,
+  'Bo Horvat': 3041986,
+  'Mason McTavish': 4917926,
+  'Elias Lindholm': 3041985,
+  'Chris Kreider': 2991077,
+  'Dawson Mercer': 4697400,
+  'Travis Sanheim': 3899957,
+  'Sean Monahan': 3041984,
+  'Owen Power': 4917932,
+  'Matty Beniers': 4917929,
+  'Dylan Strome': 4024127,
+  'Brock Boeser': 4024128,
+  'Joel Farabee': 4565230,
+  'Sean Couturier': 2562600,
+  'Jack Quinn': 4697395,
+  'Logan Cooley': 5080371,
+  'Lane Hutson': 5080376,
+  'Shane Wright': 4917931,
+  'Chandler Stephenson': 3042006,
+  'Teuvo Teravainen': 3041992,
+  'Pierre-Luc Dubois': 4233560,
+  'Adam Fantilli': 5080372,
+  'Moritz Seider': 4697396,
+  'William Eklund': 4917930,
+  'Max Domi': 3114725,
+  'Alex Newhook': 4565227,
+  'Matias Maccelli': 4917928,
+  'Steven Stamkos': 5765,
+  'Trevor Zegras': 4697394,
+  'Noel Acciari': 3042003,
+  'Jake Oettinger': 4565231,
+  'Gustav Nyquist': 2562605,
+  'JT Compher': 3899959,
+  'Kyle Palmieri': 2976858,
+  'Carter Hart': 4233572,
+  'Juuso Valimaki': 4233570,
+  'Mark Stone': 2976865,
+  'Tomas Hertl': 3041981,
 };
 
-function lang() { return window.location.pathname.startsWith('/fr') ? 'fr' : 'en'; }
-function t(k) { return (T[lang()] || T.en)[k] || k; }
-
-/* ── Position labels in FR ───────────────────────────────── */
-
-const POS_FR = { C: 'C', L: 'AG', R: 'AD', D: 'D', G: 'G', LW: 'AG', RW: 'AD' };
-function localPos(pos) {
-  if (lang() !== 'fr') return pos;
-  return POS_FR[pos] || pos;
+function espnUrl(id) {
+  return `${ESPN_HEADSHOT}${id}.png&w=96&h=70`;
 }
-
-/* ── API helpers ─────────────────────────────────────────── */
-
-async function fetchPlayer(id) {
-  try {
-    const r = await fetch(`${NHL_API}/player/${id}/landing`);
-    if (!r.ok) return null;
-    return r.json();
-  } catch { return null; }
-}
-
-function playerName(p) {
-  if (!p) return '—';
-  const f = p.firstName?.default || '';
-  const l = p.lastName?.default || '';
-  return `${f} ${l}`.trim();
-}
-
-function headshot(p) {
-  return p?.headshot || '';
-}
-
-function seasonStats(p) {
-  const s = p?.featuredStats?.regularSeason?.subSeason;
-  return {
-    gp: s?.gamesPlayed ?? '—',
-    g: s?.goals ?? '—',
-    a: s?.assists ?? '—',
-    pts: s?.points ?? '—',
-  };
-}
-
-/* ── DOM builders ────────────────────────────────────────── */
-
-function buildRow(p, rank) {
-  const tr = document.createElement('tr');
-  const name = playerName(p);
-  const hs = headshot(p);
-  const team = p?.currentTeamAbbrev || '—';
-  const pos = localPos(p?.position || '—');
-  const st = seasonStats(p);
-
-  tr.innerHTML = `
-    <td class="nhl-rank">${rank}</td>
-    <td class="nhl-player-cell">
-      <div class="nhl-player-info">
-        <img class="nhl-headshot" src="${hs}" alt="${name}" width="40" height="40" loading="lazy"
-             onerror="this.style.display='none'">
-        <span class="nhl-name">${name}</span>
-      </div>
-    </td>
-    <td class="nhl-team">${team}</td>
-    <td class="nhl-pos">${pos}</td>
-    <td class="nhl-stat">${st.gp}</td>
-    <td class="nhl-stat">${st.g}</td>
-    <td class="nhl-stat">${st.a}</td>
-    <td class="nhl-stat nhl-pts">${st.pts}</td>`;
-  return tr;
-}
-
-/* ── Main decorator ──────────────────────────────────────── */
 
 export default async function decorate(block) {
-  block.textContent = '';
+  // Find all table rows in the block
+  const rows = block.querySelectorAll('tbody tr');
 
-  /* Header */
-  const hdr = document.createElement('div');
-  hdr.className = 'nhl-header';
-  hdr.innerHTML = `<h1>${t('title')}</h1><p class="nhl-sub">${t('subtitle')}</p>`;
-  block.append(hdr);
+  rows.forEach((row) => {
+    // The player name cell is the 2nd td
+    const nameCell = row.querySelector('td:nth-child(2)');
+    if (!nameCell) return;
 
-  /* Loading indicator */
-  const loader = document.createElement('div');
-  loader.className = 'nhl-loading';
-  loader.innerHTML = `<div class="nhl-spinner"></div><p>${t('loading')}</p>`;
-  block.append(loader);
+    // Remove any existing images (EDS-rewritten broken ones)
+    nameCell.querySelectorAll('img, picture').forEach((el) => el.remove());
 
-  /* Table skeleton */
-  const wrap = document.createElement('div');
-  wrap.className = 'nhl-table-wrap';
-  const table = document.createElement('table');
-  table.className = 'nhl-table';
+    // Get the player name text
+    const name = nameCell.textContent.trim();
 
-  const thead = document.createElement('thead');
-  thead.innerHTML = `<tr>
-    <th>${t('rank')}</th><th>${t('player')}</th><th>${t('team')}</th>
-    <th>${t('pos')}</th><th>${t('gp')}</th><th>${t('g')}</th>
-    <th>${t('a')}</th><th>${t('pts')}</th></tr>`;
-  table.append(thead);
-
-  const tbody = document.createElement('tbody');
-  table.append(tbody);
-  wrap.append(table);
-
-  /* Fetch in parallel batches of 10 for progressive rendering */
-  const BATCH = 10;
-  let shown = false;
-  let loaded = 0;
-
-  try {
-    for (let i = 0; i < TOP_100.length; i += BATCH) {
-      const ids = TOP_100.slice(i, i + BATCH);
-      const batch = await Promise.all(ids.map(fetchPlayer));
-
-      batch.forEach((p, idx) => {
-        if (p) {
-          tbody.append(buildRow(p, i + idx + 1));
-          loaded += 1;
-        }
-      });
-
-      /* Swap loader for table after first batch arrives */
-      if (!shown) {
-        loader.remove();
-        block.append(wrap);
-        shown = true;
-      }
+    // Look up ESPN ID
+    const espnId = ESPN_IDS[name];
+    if (espnId) {
+      const img = document.createElement('img');
+      img.src = espnUrl(espnId);
+      img.alt = name;
+      img.className = 'nhl-headshot';
+      img.loading = 'lazy';
+      img.width = 36;
+      img.height = 36;
+      img.onerror = () => { img.style.display = 'none'; };
+      nameCell.prepend(img);
     }
-  } catch (err) {
-    // eslint-disable-next-line no-console
-    console.error('nhl-rankings fetch error', err);
-  }
+  });
 
-  if (loaded === 0) {
-    loader.innerHTML = `<p>${t('error')}</p>`;
+  // Wrap table for mobile scroll
+  const table = block.querySelector('table');
+  if (table && !table.parentElement.classList.contains('nhl-table-wrap')) {
+    const wrap = document.createElement('div');
+    wrap.className = 'nhl-table-wrap';
+    table.parentElement.insertBefore(wrap, table);
+    wrap.appendChild(table);
   }
 }

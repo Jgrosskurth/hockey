@@ -19,61 +19,24 @@
   overflow: hidden;
   max-width: 960px;
   margin: 2rem auto;
+  padding: 0;
 }
 
-/* Header */
-.nhl-rankings .nhl-header {
-  padding: 2rem 2rem 1.5rem;
-  text-align: center;
-  background: linear-gradient(180deg, #162535, var(--nhl-bg));
-  border-bottom: 1px solid var(--nhl-border);
+/* Table wrapper */
+.nhl-rankings .nhl-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
-.nhl-rankings .nhl-header h1 {
-  font-size: 1.75rem;
-  font-weight: 700;
-  margin: 0 0 .25rem;
-  color: #fff;
-  letter-spacing: -.02em;
-}
-
-.nhl-rankings .nhl-sub {
-  font-size: .9rem;
-  color: var(--nhl-muted);
-  margin: 0;
-}
-
-/* Loading */
-.nhl-rankings .nhl-loading {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  padding: 3rem 1rem;
-  color: var(--nhl-muted);
-}
-
-.nhl-rankings .nhl-spinner {
-  width: 28px;
-  height: 28px;
-  border: 3px solid var(--nhl-border);
-  border-top-color: var(--nhl-accent);
-  border-radius: 50%;
-  animation: nhl-spin .75s linear infinite;
-}
-
-@keyframes nhl-spin { to { transform: rotate(360deg); } }
-
-/* Table */
-.nhl-rankings .nhl-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-
+/* Table base */
+.nhl-rankings table,
 .nhl-rankings .nhl-table {
   width: 100%;
   border-collapse: collapse;
   font-size: .875rem;
 }
 
-.nhl-rankings .nhl-table thead th {
+.nhl-rankings thead th {
   position: sticky;
   top: 0;
   z-index: 2;
@@ -89,39 +52,44 @@
   white-space: nowrap;
 }
 
-.nhl-rankings .nhl-table tbody tr {
+.nhl-rankings tbody tr {
   border-bottom: 1px solid var(--nhl-border);
   transition: background .15s;
 }
-.nhl-rankings .nhl-table tbody tr:hover { background: var(--nhl-hover); }
 
-.nhl-rankings .nhl-table td {
+.nhl-rankings tbody tr:hover {
+  background: var(--nhl-hover);
+}
+
+.nhl-rankings td {
   padding: .55rem .65rem;
   vertical-align: middle;
   white-space: nowrap;
 }
 
-/* Rank */
-.nhl-rankings .nhl-rank {
+/* Rank column (first td) */
+.nhl-rankings tbody td:first-child {
   font-weight: 700;
   font-size: .85rem;
   color: var(--nhl-muted);
   text-align: center;
   width: 2.5rem;
 }
-.nhl-rankings tbody tr:nth-child(1) .nhl-rank { color: var(--nhl-gold); }
-.nhl-rankings tbody tr:nth-child(2) .nhl-rank { color: var(--nhl-silver); }
-.nhl-rankings tbody tr:nth-child(3) .nhl-rank { color: var(--nhl-bronze); }
 
-/* Player cell */
-.nhl-rankings .nhl-player-cell { min-width: 190px; }
+/* Gold/Silver/Bronze top 3 */
+.nhl-rankings tbody tr:nth-child(1) td:first-child { color: var(--nhl-gold); }
+.nhl-rankings tbody tr:nth-child(2) td:first-child { color: var(--nhl-silver); }
+.nhl-rankings tbody tr:nth-child(3) td:first-child { color: var(--nhl-bronze); }
 
-.nhl-rankings .nhl-player-info {
-  display: flex;
-  align-items: center;
-  gap: .65rem;
+/* Player column (second td) — contains img + name */
+.nhl-rankings tbody td:nth-child(2) {
+  font-weight: 600;
+  color: #fff;
+  min-width: 190px;
 }
 
+/* Headshot images */
+.nhl-rankings img,
 .nhl-rankings .nhl-headshot {
   width: 36px;
   height: 36px;
@@ -129,28 +97,38 @@
   object-fit: cover;
   background: var(--nhl-surface);
   border: 2px solid var(--nhl-border);
-  flex-shrink: 0;
+  vertical-align: middle;
+  margin-right: 8px;
 }
 
-.nhl-rankings .nhl-name { font-weight: 600; color: #fff; }
+/* Team column (3rd td) */
+.nhl-rankings tbody td:nth-child(3) {
+  font-weight: 500;
+  color: var(--nhl-accent);
+}
 
-/* Team / Pos */
-.nhl-rankings .nhl-team { font-weight: 500; color: var(--nhl-accent); }
-.nhl-rankings .nhl-pos  { color: var(--nhl-muted); }
+/* Position column (4th td) */
+.nhl-rankings tbody td:nth-child(4) {
+  color: var(--nhl-muted);
+}
 
-/* Stats */
-.nhl-rankings .nhl-stat {
+/* Stats columns (5th-8th td) */
+.nhl-rankings tbody td:nth-child(n+5) {
   text-align: center;
   font-variant-numeric: tabular-nums;
 }
-.nhl-rankings .nhl-pts { font-weight: 700; color: var(--nhl-gold); }
+
+/* Points column (last/8th td) — highlighted */
+.nhl-rankings tbody td:last-child {
+  font-weight: 700;
+  color: var(--nhl-gold);
+  text-align: center;
+}
 
 /* ── Responsive ──────────────────────────────────────────── */
 @media (max-width: 640px) {
-  .nhl-rankings .nhl-header { padding: 1.25rem 1rem 1rem; }
-  .nhl-rankings .nhl-header h1 { font-size: 1.2rem; }
-  .nhl-rankings .nhl-table { font-size: .78rem; }
-  .nhl-rankings .nhl-headshot { width: 30px; height: 30px; }
-  .nhl-rankings .nhl-table td,
-  .nhl-rankings .nhl-table thead th { padding: .45rem .4rem; }
+  .nhl-rankings table { font-size: .78rem; }
+  .nhl-rankings img { width: 30px; height: 30px; }
+  .nhl-rankings td,
+  .nhl-rankings thead th { padding: .45rem .4rem; }
 }
