@@ -1,0 +1,94 @@
+/* ESPN Headshot Swap v2 — intercepts images before NHL 404 fires */
+(function espnHeadshots() {
+  var M = {
+    '8478402':'3895074','8476453':'3101234','8477492':'3041969','8484801':'5080370',
+    '8476460':'2991075','8480018':'4565228','8480039':'4352819','8477956':'3899937',
+    '8477934':'3114727','8480027':'4565226','8480803':'4352813','8478398':'3899952',
+    '8478403':'3114726','8478864':'4565223','8481540':'4697397','8477404':'3899939',
+    '8479343':'4233563','8482740':'4917927','8479337':'4233559','8481557':'4697401',
+    '8478550':'2562602','8482116':'4697399','8479420':'4233571','8478460':'3899953',
+    '8478483':'3899933','8478427':'3899929','8477939':'3899932','8480069':'4352817',
+    '8483457':'5080376','8476459':'2991076','8481559':'4565225','8478420':'3899938',
+    '8480800':'4565224','8482078':'4697398','8484144':'5080373','8476887':'3024816',
+    '8471675':'3114','8477951':'3899944','8479542':'4565232','8475158':'3042000',
+    '8480839':'4352818','8477960':'3899951','8475913':'2976865','8483515':'4917933',
+    '8482699':'4917925','8478445':'4024126','8477940':'3114724','8480208':'4233584',
+    '8475166':'5479','8479407':'4233583','8474564':'5765','8478010':'3899946',
+    '8480820':'4352814','8480012':'4352815','8477933':'3114723','8477493':'3041970',
+    '8478449':'4233585','8479314':'4024122','8480023':'4352812','8476468':'2976860',
+    '8480002':'4233562','8478439':'3899954','8480801':'4352816','8477946':'3899936',
+    '8479318':'4024123','8471214':'3101','8479339':'4024125','8478444':'4024128',
+    '8477409':'3899945','8481542':'4697396','8477935':'3041983','8479400':'4233560',
+    '8477496':'3041985','8476389':'2991079','8481533':'4697394','8476882':'3041992',
+    '8479385':'4352820','8481528':'4565229','8482087':'4917934','8475754':'2976857',
+    '8482093':'4697402','8477507':'3042006','8478414':'4233561','8475184':'2991077',
+    '8480014':'4352811','8482742':'4917926','8478567':'3899947','8475692':'2562601',
+    '8477955':'3899950','8483460':'5080371','8476456':'2991078','8473994':'5193',
+    '8483808':'4917935','8478493':'4024124','8476539':'3042004','8482124':'4697393',
+    '8482667':'4917930','8479525':'4565233','8482665':'4917929'
+  };
+
+  var ESPN = 'https://a.espncdn.com/combiner/i?img=/i/headshots/nhl/players/full/';
+
+  function swapImg(img) {
+    var src = img.getAttribute('src') || '';
+    var match = src.match(/\/(\d{7,8})\.png/);
+    if (match && M[match[1]]) {
+      img.setAttribute('src', ESPN + M[match[1]] + '.png&h=96&w=96&scale=crop');
+      img.removeAttribute('onerror');
+      img.style.display = '';
+    }
+  }
+
+  function swapAll() {
+    document.querySelectorAll('.nhl-rankings img').forEach(swapImg);
+  }
+
+  // MutationObserver catches images as they are added to DOM
+  var observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mut) {
+      mut.addedNodes.forEach(function(node) {
+        if (node.nodeType !== 1) return;
+        if (node.tagName === 'IMG') swapImg(node);
+        node.querySelectorAll && node.querySelectorAll('img').forEach(swapImg);
+      });
+      // Also catch src attribute changes
+      if (mut.type === 'attributes' && mut.target.tagName === 'IMG') {
+        swapImg(mut.target);
+      }
+    });
+  });
+
+  // Start observing immediately
+  observer.observe(document.documentElement, {
+    childList: true,
+    subtree: true,
+    attributes: true,
+    attributeFilter: ['src']
+  });
+
+  // Also run a sweep after block renders as a safety net
+  var attempts = 0;
+  var timer = setInterval(function() {
+    swapAll();
+    // Also unhide any images that were hidden by onerror
+    document.querySelectorAll('.nhl-rankings .player-avatar img[style*="display"]').forEach(function(img) {
+      var src = img.getAttribute('src') || '';
+      if (src.includes('espncdn')) {
+        img.style.display = '';
+      }
+    });
+    // Unhide hidden siblings too
+    document.querySelectorAll('.nhl-rankings .player-avatar .initials').forEach(function(el) {
+      var img = el.parentElement.querySelector('img');
+      if (img && img.src.includes('espncdn')) {
+        el.style.display = 'none';
+        img.style.display = '';
+      }
+    });
+    if (++attempts > 30) {
+      clearInterval(timer);
+      observer.disconnect();
+    }
+  }, 300);
+})();
