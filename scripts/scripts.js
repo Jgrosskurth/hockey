@@ -155,8 +155,6 @@ async function loadEager(doc) {
 async function loadLazy(doc) {
   loadHeader(doc.querySelector('header'));
 
-  import('/scripts/espn-headshots.js');
-
   const main = doc.querySelector('main');
   await loadSections(main);
 
@@ -168,6 +166,8 @@ async function loadLazy(doc) {
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
+    import('/scripts/espn-headshots.js');
+
 }
 
 /**
