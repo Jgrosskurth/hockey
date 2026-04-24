@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-const players = [
+ players = [
   {rank:1,name:"Connor McDavid",team:"EDM",pos:"C",age:29,nat:"CA",gp:82,g:48,a:90,p:138,pim:44,pm:17,toi:"22:59",shots:306,shPct:15.7,ppg:13,ppa:41,gwg:4,bio:"Widely regarded as the best player in the world, McDavid led the league in points for the 2025-26 season with a dominant 138-point campaign. His elite skating and vision make him nearly impossible to defend. The Edmonton captain won his fifth Art Ross Trophy."},
   {rank:2,name:"Nikita Kucherov",team:"TBL",pos:"RW",age:32,nat:"RU",gp:76,g:44,a:86,p:130,pim:50,pm:43,toi:"20:20",shots:231,shPct:19.1,ppg:8,ppa:29,gwg:8,bio:"Kucherov continued his status as one of the most lethal offensive players in the NHL, posting 130 points in just 76 games. His playmaking creativity and elite shot make him Tampa Bay's offensive engine."},
   {rank:3,name:"Nathan MacKinnon",team:"COL",pos:"C",age:30,nat:"CA",gp:80,g:53,a:74,p:127,pim:39,pm:57,toi:"22:15",shots:350,shPct:15.1,ppg:11,ppa:19,gwg:7,bio:"MacKinnon led the league in goals with 53 and was the driving force behind Colorado's offensive dominance. His combination of speed, power, and finishing ability puts him in a class of his own among NHL centers."},
@@ -46,7 +46,7 @@ const players = [
   {rank:44,name:"Juraj Slafkovsky",team:"MTL",pos:"LW",age:22,nat:"SK",gp:82,g:30,a:43,p:73,pim:58,pm:15,toi:"19:30",shots:215,shPct:14.0,ppg:8,ppa:14,gwg:5,bio:"Slafkovsky's power game finally clicked, producing 73 points with 30 goals. His combination of size, skill, and physicality makes him one of the most intriguing power forwards in the NHL."},
   {rank:45,name:"Dylan Guenther",team:"UTA",pos:"RW",age:23,nat:"CA",gp:80,g:35,a:38,p:73,pim:24,pm:10,toi:"18:40",shots:230,shPct:15.2,ppg:12,ppa:10,gwg:6,bio:"Guenther's pure scoring instincts and elite release produced 35 goals in Utah's inaugural season. His ability to find open ice and fire quickly make him a rising star."},
   {rank:46,name:"Mathew Barzal",team:"NYI",pos:"C",age:28,nat:"CA",gp:78,g:24,a:48,p:72,pim:36,pm:2,toi:"20:45",shots:190,shPct:12.6,ppg:6,ppa:16,gwg:4,bio:"Barzal's dazzling skating and puck-handling produced 72 points. His ability to manipulate defenders with speed and agility makes him one of the most entertaining players in the NHL."},
-  {rank:47,name:"Nikolaj Ehlers",team:"CAR",pos:"LW",age:30,nat:"DK",gp:80,g:32,a:39,p:71,pim:22,pm:14,toi:"18:20",shots:220,shPct:14.5,ppg:8,ppa:12,gwg:4,bio:"Ehlers brought his blistering speed and finishing touch to Carolina, tallying 71 points. His ability to separate from defenders with his skating makes him a constant breakaway threat."},
+  {rank:47,name:"Nikolaj Ehlers",team:"CAR",pos:"LW",age:30,nat:"DK",gp:80,g:32,a:39,p:71,pim:22,pm:14,toi:"18:20",shots:220,shPct:14.5,ppg:8,ppa:12,gwg:4,bio:"Ehlers brought his blistering speed and finishing touch to Carolina, tallying 71 points. His ability to separate from defenders with his skating makes him a ant breakaway threat."},
   {rank:48,name:"Drake Batherson",team:"OTT",pos:"RW",age:27,nat:"CA",gp:80,g:28,a:43,p:71,pim:28,pm:5,toi:"19:15",shots:195,shPct:14.4,ppg:8,ppa:14,gwg:3,bio:"Batherson's shooting ability and net-front presence made him a key contributor for Ottawa. His quick hands in tight and ability to convert on rebounds drove his 71-point season."},
   {rank:49,name:"John Tavares",team:"TOR",pos:"C",age:35,nat:"CA",gp:82,g:28,a:43,p:71,pim:34,pm:8,toi:"18:40",shots:198,shPct:14.1,ppg:10,ppa:12,gwg:5,bio:"Tavares remains a consistent offensive force for Toronto, using his elite hockey sense and positioning to produce 71 points while mentoring the Leafs' younger players."},
   {rank:50,name:"Jesper Bratt",team:"NJD",pos:"LW",age:27,nat:"SE",gp:80,g:24,a:47,p:71,pim:18,pm:-5,toi:"19:30",shots:175,shPct:13.7,ppg:6,ppa:16,gwg:3,bio:"Bratt's intelligence and versatility were on display all season, as his playmaking and defensive commitment made him indispensable. His 71 points came while being New Jersey's most reliable forward."},
@@ -83,7 +83,7 @@ const players = [
   {rank:81,name:"Brock Nelson",team:"NYI",pos:"C",age:33,nat:"US",gp:80,g:26,a:30,p:56,pim:18,pm:0,toi:"18:30",shots:185,shPct:14.1,ppg:6,ppa:8,gwg:4,bio:"Nelson's reliable production continued with 56 points, showcasing his consistent ability to find the back of the net. His strong play down the middle provides stability for the Islanders."},
   {rank:82,name:"Seth Jarvis",team:"CAR",pos:"RW",age:23,nat:"CA",gp:78,g:24,a:32,p:56,pim:26,pm:10,toi:"17:40",shots:185,shPct:13.0,ppg:6,ppa:8,gwg:3,bio:"Jarvis's competitive fire and skill set produced 56 points for Carolina. His fearless play in traffic and ability to elevate in big moments make him an important piece of the Hurricanes' future."},
   {rank:83,name:"Chandler Stephenson",team:"SEA",pos:"C",age:31,nat:"CA",gp:80,g:18,a:38,p:56,pim:16,pm:4,toi:"18:50",shots:140,shPct:12.9,ppg:3,ppa:14,gwg:2,bio:"Stephenson's playmaking and hockey IQ produced 56 points in Seattle. His ability to drive play and make those around him better continues to make him a valuable top-six center."},
-  {rank:84,name:"Timo Meier",team:"NJD",pos:"LW",age:29,nat:"CH",gp:78,g:28,a:27,p:55,pim:42,pm:-4,toi:"18:20",shots:215,shPct:13.0,ppg:8,ppa:6,gwg:4,bio:"Meier's power game and shot volume produced 28 goals. His willingness to shoot from anywhere and use his frame to protect the puck make him a constant offensive threat."},
+  {rank:84,name:"Timo Meier",team:"NJD",pos:"LW",age:29,nat:"CH",gp:78,g:28,a:27,p:55,pim:42,pm:-4,toi:"18:20",shots:215,shPct:13.0,ppg:8,ppa:6,gwg:4,bio:"Meier's power game and shot volume produced 28 goals. His willingness to shoot from anywhere and use his frame to protect the puck make him a ant offensive threat."},
   {rank:85,name:"Chris Kreider",team:"NYR",pos:"LW",age:35,nat:"US",gp:78,g:28,a:26,p:54,pim:34,pm:-8,toi:"17:15",shots:195,shPct:14.4,ppg:10,ppa:6,gwg:5,bio:"Kreider's power-play prowess and net-front ability continued to be dangerous with 28 goals. His ability to tip pucks and screen goaltenders makes him one of the league's best net-front forwards."},
   {rank:86,name:"Gabriel Vilardi",team:"WPG",pos:"C",age:26,nat:"CA",gp:78,g:24,a:30,p:54,pim:28,pm:8,toi:"17:30",shots:175,shPct:13.7,ppg:5,ppa:8,gwg:3,bio:"Vilardi's excellent shot and hockey IQ produced 54 points in Winnipeg. His ability to play in the middle of the ice and find soft spots in defensive coverage makes him a valuable contributor."},
   {rank:87,name:"Mason McTavish",team:"ANA",pos:"C",age:23,nat:"CA",gp:80,g:22,a:32,p:54,pim:45,pm:-6,toi:"19:00",shots:178,shPct:12.4,ppg:5,ppa:10,gwg:3,bio:"McTavish's physical, skilled play produced 54 points as Anaheim's top center. His combination of size, compete level, and offensive ability projects him as a future franchise center."},
@@ -103,41 +103,41 @@ const players = [
 ];
 
 // NHL headshot IDs
-const NHL_IDS={"Connor McDavid":"8478402","Nikita Kucherov":"8476453","Nathan MacKinnon":"8477492","Macklin Celebrini":"8484801","Mark Scheifele":"8476460","Nick Suzuki":"8480018","Martin Necas":"8480039","David Pastrnak":"8477956","Leon Draisaitl":"8477934","Jason Robertson":"8480027","Evan Bouchard":"8480803","Kyle Connor":"8478398","Jack Eichel":"8478403","Kirill Kaprizov":"8478864","Cole Caufield":"8481540","Jake Guentzel":"8477404","Clayton Keller":"8479343","Wyatt Johnston":"8482740","Alex DeBrincat":"8479337","Matt Boldy":"8481557","Artemi Panarin":"8478550","Tim Stützle":"8482116","Tage Thompson":"8479420","Zach Werenski":"8478460","Mitch Marner":"8478483","Sebastian Aho":"8478427","William Nylander":"8477939","Cale Makar":"8480069","Lane Hutson":"8483457","Mika Zibanejad":"8476459","Jack Hughes":"8481559","Mikko Rantanen":"8478420","Quinn Hughes":"8480800","Lucas Raymond":"8482078","Connor Bedard":"8484144","Filip Forsberg":"8476887","Sidney Crosby":"8471675","Nick Schmaltz":"8477951","Brandon Hagel":"8479542","Ryan O'Reilly":"8475158","Rasmus Dahlin":"8480839","Adrian Kempe":"8477960","Mark Stone":"8475913","Juraj Slafkovsky":"8483515","Dylan Guenther":"8482699","Mathew Barzal":"8478445","Nikolaj Ehlers":"8477940","Drake Batherson":"8480208","John Tavares":"8475166","Jesper Bratt":"8479407","Steven Stamkos":"8474564","Brayden Point":"8478010","Andrei Svechnikov":"8480820","Elias Pettersson":"8480012","Sam Reinhart":"8477933","Aleksander Barkov":"8477493","Roope Hintz":"8478449","Matthew Tkachuk":"8479314","Robert Thomas":"8480023","J.T. Miller":"8476468","Nico Hischier":"8480002","Travis Konecny":"8478439","Brady Tkachuk":"8480801","Dylan Larkin":"8477946","Auston Matthews":"8479318","Alex Ovechkin":"8471214","Patrik Laine":"8479339","Brock Boeser":"8478444","Pavel Buchnevich":"8477409","Moritz Seider":"8481542","Sam Bennett":"8477935","Pierre-Luc Dubois":"8479400","Elias Lindholm":"8477496","Vincent Trocheck":"8476389","Tyler Bertuzzi":"8480002","Trevor Zegras":"8481533","Teuvo Teravainen":"8476882","Jordan Kyrou":"8479385","Dylan Cozens":"8481528","Jake Neighbours":"8482087","Brock Nelson":"8475754","Seth Jarvis":"8482093","Chandler Stephenson":"8477507","Timo Meier":"8478414","Chris Kreider":"8475184","Gabriel Vilardi":"8480014","Mason McTavish":"8482742","Ivan Barbashev":"8478567","Mats Zuccarello":"8475692","Jared McCann":"8477955","Logan Cooley":"8483460","Jonathan Huberdeau":"8476456","Jamie Benn":"8473994","Andrei Kuzmenko":"8483808","Joel Eriksson Ek":"8478493","Jonathan Marchessault":"8476539","Quinton Byfield":"8482124","William Eklund":"8482667","Ross Colton":"8479525","Matty Beniers":"8482665"};
+ ESPN_IDS={"Connor McDavid":"8478402","Nikita Kucherov":"8476453","Nathan MacKinnon":"8477492","Macklin Celebrini":"8484801","Mark Scheifele":"8476460","Nick Suzuki":"8480018","Martin Necas":"8480039","David Pastrnak":"8477956","Leon Draisaitl":"8477934","Jason Robertson":"8480027","Evan Bouchard":"8480803","Kyle Connor":"8478398","Jack Eichel":"8478403","Kirill Kaprizov":"8478864","Cole Caufield":"8481540","Jake Guentzel":"8477404","Clayton Keller":"8479343","Wyatt Johnston":"8482740","Alex DeBrincat":"8479337","Matt Boldy":"8481557","Artemi Panarin":"8478550","Tim Stützle":"8482116","Tage Thompson":"8479420","Zach Werenski":"8478460","Mitch Marner":"8478483","Sebastian Aho":"8478427","William Nylander":"8477939","Cale Makar":"8480069","Lane Hutson":"8483457","Mika Zibanejad":"8476459","Jack Hughes":"8481559","Mikko Rantanen":"8478420","Quinn Hughes":"8480800","Lucas Raymond":"8482078","Connor Bedard":"8484144","Filip Forsberg":"8476887","Sidney Crosby":"8471675","Nick Schmaltz":"8477951","Brandon Hagel":"8479542","Ryan O'Reilly":"8475158","Rasmus Dahlin":"8480839","Adrian Kempe":"8477960","Mark Stone":"8475913","Juraj Slafkovsky":"8483515","Dylan Guenther":"8482699","Mathew Barzal":"8478445","Nikolaj Ehlers":"8477940","Drake Batherson":"8480208","John Tavares":"8475166","Jesper Bratt":"8479407","Steven Stamkos":"8474564","Brayden Point":"8478010","Andrei Svechnikov":"8480820","Elias Pettersson":"8480012","Sam Reinhart":"8477933","Aleksander Barkov":"8477493","Roope Hintz":"8478449","Matthew Tkachuk":"8479314","Robert Thomas":"8480023","J.T. Miller":"8476468","Nico Hischier":"8480002","Travis Konecny":"8478439","Brady Tkachuk":"8480801","Dylan Larkin":"8477946","Auston Matthews":"8479318","Alex Ovechkin":"8471214","Patrik Laine":"8479339","Brock Boeser":"8478444","Pavel Buchnevich":"8477409","Moritz Seider":"8481542","Sam Bennett":"8477935","Pierre-Luc Dubois":"8479400","Elias Lindholm":"8477496","Vincent Trocheck":"8476389","Tyler Bertuzzi":"8480002","Trevor Zegras":"8481533","Teuvo Teravainen":"8476882","Jordan Kyrou":"8479385","Dylan Cozens":"8481528","Jake Neighbours":"8482087","Brock Nelson":"8475754","Seth Jarvis":"8482093","Chandler Stephenson":"8477507","Timo Meier":"8478414","Chris Kreider":"8475184","Gabriel Vilardi":"8480014","Mason McTavish":"8482742","Ivan Barbashev":"8478567","Mats Zuccarello":"8475692","Jared McCann":"8477955","Logan Cooley":"8483460","Jonathan Huberdeau":"8476456","Jamie Benn":"8473994","Andrei Kuzmenko":"8483808","Joel Eriksson Ek":"8478493","Jonathan Marchessault":"8476539","Quinton Byfield":"8482124","William Eklund":"8482667","Ross Colton":"8479525","Matty Beniers":"8482665"};
 
 // Compute ratings
 players.forEach((p) => {
   p.ppgRate = +(p.p / p.gp).toFixed(3);
-  const ppgNorm = Math.min(p.ppgRate / 1.7, 1);
-  const apgNorm = Math.min((p.a / p.gp) / 1.1, 1);
-  const shNorm = Math.min(p.shPct / 22, 1);
-  const pmNorm = Math.min(Math.max((p.pm + 60) / 120, 0), 1);
+   ppgNorm = Math.min(p.ppgRate / 1.7, 1);
+   apgNorm = Math.min((p.a / p.gp) / 1.1, 1);
+   shNorm = Math.min(p.shPct / 22, 1);
+   pmNorm = Math.min(Math.max((p.pm + 60) / 120, 0), 1);
   p.skillRating = Math.max(50, Math.min(99, Math.round((ppgNorm * 0.35 + apgNorm * 0.25 + shNorm * 0.2 + pmNorm * 0.2) * 99)));
-  const gpgNorm = Math.min((p.g / p.gp) / 0.65, 1);
-  const ptsNorm = Math.min(p.p / 140, 1);
-  const gwgNorm = Math.min(p.gwg / 12, 1);
-  const shotsNorm = Math.min(p.shots / 350, 1);
+   gpgNorm = Math.min((p.g / p.gp) / 0.65, 1);
+   ptsNorm = Math.min(p.p / 140, 1);
+   gwgNorm = Math.min(p.gwg / 12, 1);
+   shotsNorm = Math.min(p.shots / 350, 1);
   p.perfRating = Math.max(45, Math.min(99, Math.round((gpgNorm * 0.3 + ptsNorm * 0.35 + gwgNorm * 0.15 + shotsNorm * 0.2) * 99)));
 });
 
 // Helpers
 function getInitials(n) { return n.split(' ').map((w) => w[0]).join(''); }
-function getHeadshotUrl(n) { const id = NHL_IDS[n]; return id ? `https://assets.nhle.com/mugs/nhl/20252026/${id}.png` : null; }
+function getHeadshotUrl(n) {  id = NHL_IDS[n]; return id ? `https://a.espncdn.com/combiner/i?img=/i/headshots/nhl/players/full/${id}.png&h=96&w=96&scale=crop` : null; }
 function avatarHTML(p, cls = '') {
-  const url = getHeadshotUrl(p.name);
+   url = getHeadshotUrl(p.name);
   if (url) return `<div class="player-avatar ${cls}"><img src="${url}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="${p.name}"><span class="initials" style="display:none">${getInitials(p.name)}</span></div>`;
   return `<div class="player-avatar ${cls}"><span class="initials">${getInitials(p.name)}</span></div>`;
 }
 function gaugeHTML(val, max, color, size = 48) {
-  const r = (size - 8) / 2;
-  const c = 2 * Math.PI * r;
-  const offset = c * (1 - val / max);
+   r = (size - 8) / 2;
+   c = 2 * Math.PI * r;
+   offset = c * (1 - val / max);
   return `<div class="gauge" style="width:${size}px;height:${size}px"><svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}"><circle class="bg" cx="${size / 2}" cy="${size / 2}" r="${r}" stroke-width="4"/><circle class="fill" cx="${size / 2}" cy="${size / 2}" r="${r}" stroke="${color}" stroke-dasharray="${c}" stroke-dashoffset="${offset}"/></svg><div class="val" style="color:${color}">${val}</div></div>`;
 }
 function ratingColor(v) { return v >= 90 ? '#00e5ff' : v >= 80 ? '#7c4dff' : v >= 70 ? '#ffc107' : '#ff3d71'; }
 
 // Columns
-const COLUMNS = [
+ COLUMNS = [
   { key: 'rank', label: '#', cls: 'rank-cell' },
   { key: 'player', label: 'Player' },
   { key: 'pos', label: 'Pos' },
@@ -156,7 +156,7 @@ const COLUMNS = [
 ];
 
 function getSortVal(p, key) {
-  const map = { rank: 'rank', player: 'name', pos: 'pos', gp: 'gp', goals: 'g', assists: 'a', points: 'p', ppg: 'ppgRate', plusMinus: 'pm', shots: 'shots', shPct: 'shPct', ppGoals: 'ppg', gwg: 'gwg', skillRating: 'skillRating', perfRating: 'perfRating' };
+   map = { rank: 'rank', player: 'name', pos: 'pos', gp: 'gp', goals: 'g', assists: 'a', points: 'p', ppg: 'ppgRate', plusMinus: 'pm', shots: 'shots', shPct: 'shPct', ppGoals: 'ppg', gwg: 'gwg', skillRating: 'skillRating', perfRating: 'perfRating' };
   return p[map[key] || key];
 }
 
@@ -171,15 +171,15 @@ export default function decorate(block) {
   let teamFilter = 'all';
 
   // Build hero
-  const hero = document.createElement('div');
+   hero = document.createElement('div');
   hero.className = 'hero';
   hero.innerHTML = `<div class="hero-content"><h1>Matthew's Top 100<br>NHL Rankings</h1><div class="subtitle">2025–26 Regular Season &bull; Offensive Players</div><div class="tagline">Stats sourced from NHL.com, ESPN, Hockey-Reference &bull; Updated April 2026</div></div>`;
   block.append(hero);
 
   // Nav bar
-  const navBar = document.createElement('div');
+   navBar = document.createElement('div');
   navBar.className = 'nav-bar';
-  const navBtns = [
+   navBtns = [
     { key: 'rank', label: 'Rank' }, { key: 'points', label: 'Points' }, { key: 'goals', label: 'Goals' },
     { key: 'assists', label: 'Assists' }, { key: 'ppg', label: 'P/GP' }, { key: 'plusMinus', label: '+/-' },
     { key: 'shots', label: 'Shots' }, { key: 'shPct', label: 'SH%' },
@@ -189,8 +189,8 @@ export default function decorate(block) {
   block.append(navBar);
 
   // Controls
-  const teams = [...new Set(players.map((p) => p.team))].sort();
-  const controls = document.createElement('div');
+   teams = [...new Set(players.map((p) => p.team))].sort();
+   controls = document.createElement('div');
   controls.className = 'controls';
   controls.innerHTML = `
     <div class="search-box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><input type="text" placeholder="Search players, teams, positions..."></div>
@@ -199,31 +199,31 @@ export default function decorate(block) {
   block.append(controls);
 
   // Stats strip
-  const strip = document.createElement('div');
+   strip = document.createElement('div');
   strip.className = 'stats-strip';
   block.append(strip);
 
   // Table
-  const tableWrap = document.createElement('div');
+   tableWrap = document.createElement('div');
   tableWrap.className = 'table-container';
   tableWrap.innerHTML = '<table><thead><tr></tr></thead><tbody></tbody></table>';
   block.append(tableWrap);
 
   // Modal
-  const overlay = document.createElement('div');
+   overlay = document.createElement('div');
   overlay.className = 'modal-overlay';
   overlay.innerHTML = '<div class="modal"><button class="modal-close">&times;</button><div class="modal-header"></div><div class="modal-body"></div></div>';
   block.append(overlay);
 
-  const thead = tableWrap.querySelector('thead tr');
-  const tbody = tableWrap.querySelector('tbody');
+   thead = tableWrap.querySelector('thead tr');
+   tbody = tableWrap.querySelector('tbody');
 
   function filterPlayers() {
     return players.filter((p) => {
       if (posFilter !== 'all' && p.pos !== posFilter) return false;
       if (teamFilter !== 'all' && p.team !== teamFilter) return false;
       if (searchTerm) {
-        const s = searchTerm.toLowerCase();
+         s = searchTerm.toLowerCase();
         return p.name.toLowerCase().includes(s) || p.team.toLowerCase().includes(s) || p.pos.toLowerCase().includes(s);
       }
       return true;
@@ -243,17 +243,17 @@ export default function decorate(block) {
 
   function renderHead() {
     thead.innerHTML = COLUMNS.map((c) => {
-      const cls = sortKey === c.key ? (sortDir === 'asc' ? 'sorted-asc' : 'sorted-desc') : '';
+       cls = sortKey === c.key ? (sortDir === 'asc' ? 'sorted-asc' : 'sorted-desc') : '';
       return `<th class="${cls}" data-sort="${c.key}">${c.label}</th>`;
     }).join('');
   }
 
   function renderStrip(data) {
-    const totalG = data.reduce((s, p) => s + p.g, 0);
-    const totalA = data.reduce((s, p) => s + p.a, 0);
-    const avgPPG = data.length ? (data.reduce((s, p) => s + p.ppgRate, 0) / data.length).toFixed(2) : 0;
-    const topSkill = data.length ? Math.max(...data.map((p) => p.skillRating)) : 0;
-    const avgAge = data.length ? (data.reduce((s, p) => s + p.age, 0) / data.length).toFixed(1) : 0;
+     totalG = data.reduce((s, p) => s + p.g, 0);
+     totalA = data.reduce((s, p) => s + p.a, 0);
+     avgPPG = data.length ? (data.reduce((s, p) => s + p.ppgRate, 0) / data.length).toFixed(2) : 0;
+     topSkill = data.length ? Math.max(...data.map((p) => p.skillRating)) : 0;
+     avgAge = data.length ? (data.reduce((s, p) => s + p.age, 0) / data.length).toFixed(1) : 0;
     strip.innerHTML = `
       <div class="stat-card"><div class="val">${data.length}</div><div class="lbl">Players</div></div>
       <div class="stat-card"><div class="val">${totalG.toLocaleString()}</div><div class="lbl">Total Goals</div></div>
@@ -264,11 +264,11 @@ export default function decorate(block) {
   }
 
   function render() {
-    const data = sortPlayers(filterPlayers());
+     data = sortPlayers(filterPlayers());
     renderHead();
     renderStrip(data);
     tbody.innerHTML = data.map((p) => {
-      const rankCls = p.rank <= 3 ? `rank-${p.rank}` : '';
+       rankCls = p.rank <= 3 ? `rank-${p.rank}` : '';
       return `<tr data-rank="${p.rank}">
         <td class="rank-cell ${rankCls}">${p.rank}</td>
         <td><div class="player-cell">${avatarHTML(p)}<div class="player-info"><div class="name">${p.name}</div><div class="team">${p.team} &bull; Age ${p.age}</div></div></div></td>
@@ -290,13 +290,13 @@ export default function decorate(block) {
   }
 
   function openModal(rank) {
-    const p = players.find((x) => x.rank === rank);
+     p = players.find((x) => x.rank === rank);
     if (!p) return;
-    const sc = ratingColor(p.skillRating);
-    const pc = ratingColor(p.perfRating);
+     sc = ratingColor(p.skillRating);
+     pc = ratingColor(p.perfRating);
     function mg(val, max, color, label) {
-      const r = 26; const c = 2 * Math.PI * r; const o = c * (1 - val / max);
-      const tier = val >= 90 ? 'Elite' : val >= 80 ? 'Excellent' : val >= 70 ? 'Very Good' : 'Good';
+       r = 26;  c = 2 * Math.PI * r;  o = c * (1 - val / max);
+       tier = val >= 90 ? 'Elite' : val >= 80 ? 'Excellent' : val >= 70 ? 'Very Good' : 'Good';
       return `<div class="modal-gauge-card"><div class="modal-gauge"><svg width="64" height="64" viewBox="0 0 64 64"><circle class="bg" cx="32" cy="32" r="${r}" stroke-width="5"/><circle class="fill" cx="32" cy="32" r="${r}" stroke="${color}" stroke-dasharray="${c}" stroke-dashoffset="${o}" stroke-width="5" stroke-linecap="round"/></svg><div class="val" style="color:${color}">${val}</div></div><div class="modal-gauge-info"><div class="gl">${label}</div><div class="gv" style="color:${color}">${tier}</div></div></div>`;
     }
     overlay.querySelector('.modal-header').innerHTML = `${avatarHTML(p, 'modal-avatar-size')}<div class="modal-title"><h2>${p.name}</h2><div class="meta"><span><span class="pos-badge pos-${p.pos}">${p.pos}</span></span><span>${p.team}</span><span>Age ${p.age}</span><span>${p.nat}</span><span style="color:var(--accent);font-weight:700">Rank #${p.rank}</span></div></div>`;
@@ -322,9 +322,9 @@ export default function decorate(block) {
 
   // Event listeners
   navBar.addEventListener('click', (e) => {
-    const btn = e.target.closest('.nav-btn');
+     btn = e.target.closest('.nav-btn');
     if (!btn) return;
-    const k = btn.dataset.sort;
+     k = btn.dataset.sort;
     if (sortKey === k) sortDir = sortDir === 'asc' ? 'desc' : 'asc';
     else { sortKey = k; sortDir = k === 'rank' ? 'asc' : 'desc'; }
     navBar.querySelectorAll('.nav-btn').forEach((b) => b.classList.toggle('active', b.dataset.sort === sortKey));
@@ -332,9 +332,9 @@ export default function decorate(block) {
   });
 
   thead.addEventListener('click', (e) => {
-    const th = e.target.closest('th[data-sort]');
+     th = e.target.closest('th[data-sort]');
     if (!th) return;
-    const k = th.dataset.sort;
+     k = th.dataset.sort;
     if (sortKey === k) sortDir = sortDir === 'asc' ? 'desc' : 'asc';
     else { sortKey = k; sortDir = ['rank', 'player', 'pos'].includes(k) ? 'asc' : 'desc'; }
     navBar.querySelectorAll('.nav-btn').forEach((b) => b.classList.toggle('active', b.dataset.sort === sortKey));
@@ -342,7 +342,7 @@ export default function decorate(block) {
   });
 
   tbody.addEventListener('click', (e) => {
-    const tr = e.target.closest('tr[data-rank]');
+     tr = e.target.closest('tr[data-rank]');
     if (tr) openModal(+tr.dataset.rank);
   });
 
