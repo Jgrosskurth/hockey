@@ -21,7 +21,7 @@ const players = [
   {rank:19,name:"Alex DeBrincat",team:"DET",pos:"RW",age:28,nat:"US",gp:82,g:41,a:44,p:85,pim:19,pm:8,toi:"18:30",shots:287,shPct:14.3,ppg:15,ppa:8,gwg:6,bio:"DeBrincat brought his signature scoring touch to Detroit, netting 41 goals. His quick release from the circles and instinct around the crease made him the Red Wings' top goal scorer."},
   {rank:20,name:"Matt Boldy",team:"MIN",pos:"LW",age:25,nat:"US",gp:76,g:42,a:43,p:85,pim:30,pm:18,toi:"20:34",shots:254,shPct:16.5,ppg:11,ppa:19,gwg:3,bio:"Boldy took a major step forward with 42 goals and 85 points, establishing himself as a legitimate star. His size, shot, and playmaking ability make him one of the most complete young forwards."},
   {rank:21,name:"Artemi Panarin",team:"LAK",pos:"LW",age:34,nat:"RU",gp:78,g:28,a:56,p:84,pim:20,pm:-7,toi:"20:50",shots:224,shPct:12.5,ppg:4,ppa:19,gwg:4,bio:"Panarin's silky hands and elite vision remained lethal despite a mid-season trade. His ability to create offense from nothing keeps him among the NHL's most gifted playmakers."},
-  {rank:22,name:"Tim Stützle",team:"OTT",pos:"C",age:24,nat:"DE",gp:80,g:34,a:49,p:83,pim:39,pm:7,toi:"20:16",shots:194,shPct:17.5,ppg:9,ppa:20,gwg:5,bio:"Stützle's breakout 83-point season cemented him as Ottawa's offensive cornerstone. His combination of speed, skill, and physicality makes him one of the most dynamic young centers in the league."},
+  {rank:22,name:"Tim St\u00fctzle",team:"OTT",pos:"C",age:24,nat:"DE",gp:80,g:34,a:49,p:83,pim:39,pm:7,toi:"20:16",shots:194,shPct:17.5,ppg:9,ppa:20,gwg:5,bio:"St\u00fctzle's breakout 83-point season cemented him as Ottawa's offensive cornerstone. His combination of speed, skill, and physicality makes him one of the most dynamic young centers in the league."},
   {rank:23,name:"Tage Thompson",team:"BUF",pos:"C",age:28,nat:"US",gp:81,g:40,a:41,p:81,pim:35,pm:-6,toi:"19:14",shots:272,shPct:14.7,ppg:6,ppa:18,gwg:5,bio:"Thompson's size and elite shot produced 40 goals for the second consecutive season. His ability to dominate from the high slot with his heavy, accurate shot makes him a matchup nightmare."},
   {rank:24,name:"Zach Werenski",team:"CBJ",pos:"D",age:28,nat:"US",gp:75,g:22,a:59,p:81,pim:18,pm:7,toi:"26:36",shots:260,shPct:8.5,ppg:4,ppa:17,gwg:2,bio:"Werenski's offensive production from the blue line was exceptional, with 81 points ranking him among the top defensemen in the league. His skating and shot from the point are elite weapons."},
   {rank:25,name:"Mitch Marner",team:"VGK",pos:"RW",age:28,nat:"CA",gp:81,g:24,a:56,p:80,pim:24,pm:17,toi:"19:57",shots:165,shPct:14.6,ppg:5,ppa:19,gwg:2,bio:"Marner's elite playmaking translated seamlessly to Vegas, posting 80 points. His compete level, defensive awareness, and ability to quarterback the power play make him one of the most well-rounded wingers."},
@@ -103,7 +103,7 @@ const players = [
 ];
 
 // ESPN headshot IDs
-const ESPN_IDS={"Connor McDavid":"3895074","Nikita Kucherov":"3101234","Nathan MacKinnon":"3041969","Macklin Celebrini":"5080370","Mark Scheifele":"2991075","Nick Suzuki":"4565228","Martin Necas":"4352819","David Pastrnak":"3899937","Leon Draisaitl":"3114727","Jason Robertson":"4565226","Evan Bouchard":"4352813","Kyle Connor":"3899952","Jack Eichel":"3114726","Kirill Kaprizov":"4565223","Cole Caufield":"4697397","Jake Guentzel":"3899939","Clayton Keller":"4233563","Wyatt Johnston":"4917927","Alex DeBrincat":"4233559","Matt Boldy":"4697401","Artemi Panarin":"2562602","Tim Stützle":"4697399","Tage Thompson":"4233571","Zach Werenski":"3899953","Mitch Marner":"3899933","Sebastian Aho":"3899929","William Nylander":"3899932","Cale Makar":"4352817","Lane Hutson":"5080376","Mika Zibanejad":"2991076","Jack Hughes":"4565225","Mikko Rantanen":"3899938","Quinn Hughes":"4565224","Lucas Raymond":"4697398","Connor Bedard":"5080373","Filip Forsberg":"3024816","Sidney Crosby":"3114","Nick Schmaltz":"3899944","Brandon Hagel":"4565232","Ryan O'Reilly":"3042000","Rasmus Dahlin":"4352818","Adrian Kempe":"3899951","Mark Stone":"2976865","Juraj Slafkovsky":"4917933","Dylan Guenther":"4917925","Mathew Barzal":"4024126","Nikolaj Ehlers":"3114724","Drake Batherson":"4233584","John Tavares":"5479","Jesper Bratt":"4233583","Steven Stamkos":"5765","Brayden Point":"3899946","Andrei Svechnikov":"4352814","Elias Pettersson":"4352815","Sam Reinhart":"3114723","Aleksander Barkov":"3041970","Roope Hintz":"4233585","Matthew Tkachuk":"4024122","Robert Thomas":"4352812","J.T. Miller":"2976860","Nico Hischier":"4233562","Travis Konecny":"3899954","Brady Tkachuk":"4352816","Dylan Larkin":"3899936","Auston Matthews":"4024123","Alex Ovechkin":"3101","Patrik Laine":"4024125","Brock Boeser":"4024128","Pavel Buchnevich":"3899945","Moritz Seider":"4697396","Sam Bennett":"3041983","Pierre-Luc Dubois":"4233560","Elias Lindholm":"3041985","Vincent Trocheck":"2991079","Tyler Bertuzzi":"3899958","Trevor Zegras":"4697394","Teuvo Teravainen":"3041992","Jordan Kyrou":"4352820","Dylan Cozens":"4565229","Jake Neighbours":"4917934","Brock Nelson":"2976857","Seth Jarvis":"4697402","Chandler Stephenson":"3042006","Timo Meier":"4233561","Chris Kreider":"2991077","Gabriel Vilardi":"4352811","Mason McTavish":"4917926","Ivan Barbashev":"3899947","Mats Zuccarello":"2562601","Jared McCann":"3899950","Logan Cooley":"5080371","Jonathan Huberdeau":"2991078","Jamie Benn":"5193","Andrei Kuzmenko":"4917935","Joel Eriksson Ek":"4024124","Jonathan Marchessault":"3042004","Quinton Byfield":"4697393","William Eklund":"4917930","Ross Colton":"4565233","Matty Beniers":"4917929"};
+const ESPN_IDS={"Connor McDavid":"3895074","Nikita Kucherov":"3101234","Nathan MacKinnon":"3041969","Macklin Celebrini":"5080370","Mark Scheifele":"2991075","Nick Suzuki":"4565228","Martin Necas":"4352819","David Pastrnak":"3899937","Leon Draisaitl":"3114727","Jason Robertson":"4565226","Evan Bouchard":"4352813","Kyle Connor":"3899952","Jack Eichel":"3114726","Kirill Kaprizov":"4565223","Cole Caufield":"4697397","Jake Guentzel":"3899939","Clayton Keller":"4233563","Wyatt Johnston":"4917927","Alex DeBrincat":"4233559","Matt Boldy":"4697401","Artemi Panarin":"2562602","Tim St\u00fctzle":"4697399","Tage Thompson":"4233571","Zach Werenski":"3899953","Mitch Marner":"3899933","Sebastian Aho":"3899929","William Nylander":"3899932","Cale Makar":"4352817","Lane Hutson":"5080376","Mika Zibanejad":"2991076","Jack Hughes":"4565225","Mikko Rantanen":"3899938","Quinn Hughes":"4565224","Lucas Raymond":"4697398","Connor Bedard":"5080373","Filip Forsberg":"3024816","Sidney Crosby":"3114","Nick Schmaltz":"3899944","Brandon Hagel":"4565232","Ryan O'Reilly":"3042000","Rasmus Dahlin":"4352818","Adrian Kempe":"3899951","Mark Stone":"2976865","Juraj Slafkovsky":"4917933","Dylan Guenther":"4917925","Mathew Barzal":"4024126","Nikolaj Ehlers":"3114724","Drake Batherson":"4233584","John Tavares":"5479","Jesper Bratt":"4233583","Steven Stamkos":"5765","Brayden Point":"3899946","Andrei Svechnikov":"4352814","Elias Pettersson":"4352815","Sam Reinhart":"3114723","Aleksander Barkov":"3041970","Roope Hintz":"4233585","Matthew Tkachuk":"4024122","Robert Thomas":"4352812","J.T. Miller":"2976860","Nico Hischier":"4233562","Travis Konecny":"3899954","Brady Tkachuk":"4352816","Dylan Larkin":"3899936","Auston Matthews":"4024123","Alex Ovechkin":"3101","Patrik Laine":"4024125","Brock Boeser":"4024128","Pavel Buchnevich":"3899945","Moritz Seider":"4697396","Sam Bennett":"3041983","Pierre-Luc Dubois":"4233560","Elias Lindholm":"3041985","Vincent Trocheck":"2991079","Tyler Bertuzzi":"3899958","Trevor Zegras":"4697394","Teuvo Teravainen":"3041992","Jordan Kyrou":"4352820","Dylan Cozens":"4565229","Jake Neighbours":"4917934","Brock Nelson":"2976857","Seth Jarvis":"4697402","Chandler Stephenson":"3042006","Timo Meier":"4233561","Chris Kreider":"2991077","Gabriel Vilardi":"4352811","Mason McTavish":"4917926","Ivan Barbashev":"3899947","Mats Zuccarello":"2562601","Jared McCann":"3899950","Logan Cooley":"5080371","Jonathan Huberdeau":"2991078","Jamie Benn":"5193","Andrei Kuzmenko":"4917935","Joel Eriksson Ek":"4024124","Jonathan Marchessault":"3042004","Quinton Byfield":"4697393","William Eklund":"4917930","Ross Colton":"4565233","Matty Beniers":"4917929"};
 
 // Compute ratings
 players.forEach((p) => {
@@ -122,7 +122,7 @@ players.forEach((p) => {
 
 // Helpers
 function getInitials(n) { return n.split(' ').map((w) => w[0]).join(''); }
-function getHeadshotUrl(n) { const id = ESPN_IDS[n]; return id ? `https://a.espncdn.com/combiner/i?img=/i/headshots/nhl/players/full/${id}.png&h=96&w=96&scale=crop` : null; }.png` : null; }
+function getHeadshotUrl(n) { const id = ESPN_IDS[n]; return id ? `https://a.espncdn.com/combiner/i?img=/i/headshots/nhl/players/full/${id}.png&h=96&w=96&scale=crop` : null; }
 function avatarHTML(p, cls = '') {
   const url = getHeadshotUrl(p.name);
   if (url) return `<div class="player-avatar ${cls}"><img src="${url}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="${p.name}"><span class="initials" style="display:none">${getInitials(p.name)}</span></div>`;
@@ -163,20 +163,17 @@ function getSortVal(p, key) {
 export default function decorate(block) {
   block.textContent = '';
 
-  // State
   let sortKey = 'rank';
   let sortDir = 'asc';
   let searchTerm = '';
   let posFilter = 'all';
   let teamFilter = 'all';
 
-  // Build hero
   const hero = document.createElement('div');
   hero.className = 'hero';
-  hero.innerHTML = `<div class="hero-content"><h1>Matthew's Top 100<br>NHL Rankings</h1><div class="subtitle">2025–26 Regular Season &bull; Offensive Players</div><div class="tagline">Stats sourced from NHL.com, ESPN, Hockey-Reference &bull; Updated April 2026</div></div>`;
+  hero.innerHTML = `<div class="hero-content"><h1>Matthew\u2019s Top 100<br>NHL Rankings</h1><div class="subtitle">2025\u201326 Regular Season \u2022 Offensive Players</div><div class="tagline">Stats sourced from NHL.com, ESPN, Hockey-Reference \u2022 Updated April 2026</div></div>`;
   block.append(hero);
 
-  // Nav bar
   const navBar = document.createElement('div');
   navBar.className = 'nav-bar';
   const navBtns = [
@@ -188,31 +185,24 @@ export default function decorate(block) {
   navBar.innerHTML = `<div class="nav-inner">${navBtns.map((b) => `<button class="nav-btn${b.key === 'rank' ? ' active' : ''}${b.accent ? ' accent2' : ''}" data-sort="${b.key}">${b.label}</button>`).join('')}</div>`;
   block.append(navBar);
 
-  // Controls
   const teams = [...new Set(players.map((p) => p.team))].sort();
   const controls = document.createElement('div');
   controls.className = 'controls';
-  controls.innerHTML = `
-    <div class="search-box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><input type="text" placeholder="Search players, teams, positions..."></div>
-    <select class="filter-select" data-filter="pos"><option value="all">All Positions</option><option value="C">Center</option><option value="LW">Left Wing</option><option value="RW">Right Wing</option><option value="D">Defense</option></select>
-    <select class="filter-select" data-filter="team"><option value="all">All Teams</option>${teams.map((t) => `<option value="${t}">${t}</option>`).join('')}</select>`;
+  controls.innerHTML = `<div class="search-box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><input type="text" placeholder="Search players, teams, positions..."></div><select class="filter-select" data-filter="pos"><option value="all">All Positions</option><option value="C">Center</option><option value="LW">Left Wing</option><option value="RW">Right Wing</option><option value="D">Defense</option></select><select class="filter-select" data-filter="team"><option value="all">All Teams</option>${teams.map((t) => `<option value="${t}">${t}</option>`).join('')}</select>`;
   block.append(controls);
 
-  // Stats strip
   const strip = document.createElement('div');
   strip.className = 'stats-strip';
   block.append(strip);
 
-  // Table
   const tableWrap = document.createElement('div');
   tableWrap.className = 'table-container';
   tableWrap.innerHTML = '<table><thead><tr></tr></thead><tbody></tbody></table>';
   block.append(tableWrap);
 
-  // Modal
   const overlay = document.createElement('div');
   overlay.className = 'modal-overlay';
-  overlay.innerHTML = '<div class="modal"><button class="modal-close">&times;</button><div class="modal-header"></div><div class="modal-body"></div></div>';
+  overlay.innerHTML = '<div class="modal"><button class="modal-close">\u00d7</button><div class="modal-header"></div><div class="modal-body"></div></div>';
   block.append(overlay);
 
   const thead = tableWrap.querySelector('thead tr');
@@ -254,13 +244,7 @@ export default function decorate(block) {
     const avgPPG = data.length ? (data.reduce((s, p) => s + p.ppgRate, 0) / data.length).toFixed(2) : 0;
     const topSkill = data.length ? Math.max(...data.map((p) => p.skillRating)) : 0;
     const avgAge = data.length ? (data.reduce((s, p) => s + p.age, 0) / data.length).toFixed(1) : 0;
-    strip.innerHTML = `
-      <div class="stat-card"><div class="val">${data.length}</div><div class="lbl">Players</div></div>
-      <div class="stat-card"><div class="val">${totalG.toLocaleString()}</div><div class="lbl">Total Goals</div></div>
-      <div class="stat-card"><div class="val">${totalA.toLocaleString()}</div><div class="lbl">Total Assists</div></div>
-      <div class="stat-card"><div class="val">${avgPPG}</div><div class="lbl">Avg P/GP</div></div>
-      <div class="stat-card"><div class="val">${topSkill}</div><div class="lbl">Top Skill</div></div>
-      <div class="stat-card"><div class="val">${avgAge}</div><div class="lbl">Avg Age</div></div>`;
+    strip.innerHTML = `<div class="stat-card"><div class="val">${data.length}</div><div class="lbl">Players</div></div><div class="stat-card"><div class="val">${totalG.toLocaleString()}</div><div class="lbl">Total Goals</div></div><div class="stat-card"><div class="val">${totalA.toLocaleString()}</div><div class="lbl">Total Assists</div></div><div class="stat-card"><div class="val">${avgPPG}</div><div class="lbl">Avg P/GP</div></div><div class="stat-card"><div class="val">${topSkill}</div><div class="lbl">Top Skill</div></div><div class="stat-card"><div class="val">${avgAge}</div><div class="lbl">Avg Age</div></div>`;
   }
 
   function render() {
@@ -269,23 +253,7 @@ export default function decorate(block) {
     renderStrip(data);
     tbody.innerHTML = data.map((p) => {
       const rankCls = p.rank <= 3 ? `rank-${p.rank}` : '';
-      return `<tr data-rank="${p.rank}">
-        <td class="rank-cell ${rankCls}">${p.rank}</td>
-        <td><div class="player-cell">${avatarHTML(p)}<div class="player-info"><div class="name">${p.name}</div><div class="team">${p.team} &bull; Age ${p.age}</div></div></div></td>
-        <td><span class="pos-badge pos-${p.pos}">${p.pos}</span></td>
-        <td>${p.gp}</td>
-        <td style="font-weight:600">${p.g}</td>
-        <td style="font-weight:600">${p.a}</td>
-        <td style="font-weight:700;color:var(--accent)">${p.p}</td>
-        <td>${p.ppgRate.toFixed(2)}</td>
-        <td style="color:${p.pm > 0 ? '#4caf50' : p.pm < 0 ? '#ff5252' : 'var(--text2)'}">${p.pm > 0 ? '+' : ''}${p.pm}</td>
-        <td>${p.shots}</td>
-        <td>${p.shPct.toFixed(1)}%</td>
-        <td>${p.ppg}</td>
-        <td>${p.gwg}</td>
-        <td class="gauge-cell">${gaugeHTML(p.skillRating, 99, ratingColor(p.skillRating))}</td>
-        <td class="gauge-cell">${gaugeHTML(p.perfRating, 99, ratingColor(p.perfRating))}</td>
-      </tr>`;
+      return `<tr data-rank="${p.rank}"><td class="rank-cell ${rankCls}">${p.rank}</td><td><div class="player-cell">${avatarHTML(p)}<div class="player-info"><div class="name">${p.name}</div><div class="team">${p.team} \u2022 Age ${p.age}</div></div></div></td><td><span class="pos-badge pos-${p.pos}">${p.pos}</span></td><td>${p.gp}</td><td style="font-weight:600">${p.g}</td><td style="font-weight:600">${p.a}</td><td style="font-weight:700;color:var(--accent)">${p.p}</td><td>${p.ppgRate.toFixed(2)}</td><td style="color:${p.pm > 0 ? '#4caf50' : p.pm < 0 ? '#ff5252' : 'var(--text2)'}">${p.pm > 0 ? '+' : ''}${p.pm}</td><td>${p.shots}</td><td>${p.shPct.toFixed(1)}%</td><td>${p.ppg}</td><td>${p.gwg}</td><td class="gauge-cell">${gaugeHTML(p.skillRating, 99, ratingColor(p.skillRating))}</td><td class="gauge-cell">${gaugeHTML(p.perfRating, 99, ratingColor(p.perfRating))}</td></tr>`;
     }).join('');
   }
 
@@ -300,27 +268,10 @@ export default function decorate(block) {
       return `<div class="modal-gauge-card"><div class="modal-gauge"><svg width="64" height="64" viewBox="0 0 64 64"><circle class="bg" cx="32" cy="32" r="${r}" stroke-width="5"/><circle class="fill" cx="32" cy="32" r="${r}" stroke="${color}" stroke-dasharray="${c}" stroke-dashoffset="${o}" stroke-width="5" stroke-linecap="round"/></svg><div class="val" style="color:${color}">${val}</div></div><div class="modal-gauge-info"><div class="gl">${label}</div><div class="gv" style="color:${color}">${tier}</div></div></div>`;
     }
     overlay.querySelector('.modal-header').innerHTML = `${avatarHTML(p, 'modal-avatar-size')}<div class="modal-title"><h2>${p.name}</h2><div class="meta"><span><span class="pos-badge pos-${p.pos}">${p.pos}</span></span><span>${p.team}</span><span>Age ${p.age}</span><span>${p.nat}</span><span style="color:var(--accent);font-weight:700">Rank #${p.rank}</span></div></div>`;
-    overlay.querySelector('.modal-body').innerHTML = `
-      <div class="modal-bio">${p.bio}</div>
-      <div class="modal-stats">
-        <div class="modal-stat"><div class="v">${p.gp}</div><div class="l">Games</div></div>
-        <div class="modal-stat"><div class="v">${p.g}</div><div class="l">Goals</div></div>
-        <div class="modal-stat"><div class="v">${p.a}</div><div class="l">Assists</div></div>
-        <div class="modal-stat"><div class="v" style="color:var(--accent)">${p.p}</div><div class="l">Points</div></div>
-        <div class="modal-stat"><div class="v">${p.ppgRate.toFixed(2)}</div><div class="l">P/GP</div></div>
-        <div class="modal-stat"><div class="v" style="color:${p.pm >= 0 ? '#4caf50' : '#ff5252'}">${p.pm > 0 ? '+' : ''}${p.pm}</div><div class="l">+/-</div></div>
-        <div class="modal-stat"><div class="v">${p.shots}</div><div class="l">Shots</div></div>
-        <div class="modal-stat"><div class="v">${p.shPct.toFixed(1)}%</div><div class="l">SH%</div></div>
-        <div class="modal-stat"><div class="v">${p.ppg}</div><div class="l">PP Goals</div></div>
-        <div class="modal-stat"><div class="v">${p.ppa}</div><div class="l">PP Assists</div></div>
-        <div class="modal-stat"><div class="v">${p.gwg}</div><div class="l">GWG</div></div>
-        <div class="modal-stat"><div class="v">${p.pim}</div><div class="l">PIM</div></div>
-      </div>
-      <div class="modal-gauges">${mg(p.skillRating, 99, sc, 'Skill Rating')}${mg(p.perfRating, 99, pc, 'Performance')}</div>`;
+    overlay.querySelector('.modal-body').innerHTML = `<div class="modal-bio">${p.bio}</div><div class="modal-stats"><div class="modal-stat"><div class="v">${p.gp}</div><div class="l">Games</div></div><div class="modal-stat"><div class="v">${p.g}</div><div class="l">Goals</div></div><div class="modal-stat"><div class="v">${p.a}</div><div class="l">Assists</div></div><div class="modal-stat"><div class="v" style="color:var(--accent)">${p.p}</div><div class="l">Points</div></div><div class="modal-stat"><div class="v">${p.ppgRate.toFixed(2)}</div><div class="l">P/GP</div></div><div class="modal-stat"><div class="v" style="color:${p.pm >= 0 ? '#4caf50' : '#ff5252'}">${p.pm > 0 ? '+' : ''}${p.pm}</div><div class="l">+/-</div></div><div class="modal-stat"><div class="v">${p.shots}</div><div class="l">Shots</div></div><div class="modal-stat"><div class="v">${p.shPct.toFixed(1)}%</div><div class="l">SH%</div></div><div class="modal-stat"><div class="v">${p.ppg}</div><div class="l">PP Goals</div></div><div class="modal-stat"><div class="v">${p.ppa}</div><div class="l">PP Assists</div></div><div class="modal-stat"><div class="v">${p.gwg}</div><div class="l">GWG</div></div><div class="modal-stat"><div class="v">${p.pim}</div><div class="l">PIM</div></div></div><div class="modal-gauges">${mg(p.skillRating, 99, sc, 'Skill Rating')}${mg(p.perfRating, 99, pc, 'Performance')}</div>`;
     overlay.classList.add('open');
   }
 
-  // Event listeners
   navBar.addEventListener('click', (e) => {
     const btn = e.target.closest('.nav-btn');
     if (!btn) return;
