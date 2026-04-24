@@ -1,0 +1,665 @@
+/* nhl-rankings block */
+.nhl-rankings {
+  padding: 0;
+  width: 100%;
+}
+
+/* filter bar */
+.nhl-rankings .filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 20px 0;
+  align-items: center;
+}
+
+.nhl-rankings .filter-bar .search-box {
+  flex: 1 1 250px;
+  position: relative;
+}
+
+.nhl-rankings .filter-bar .search-box input {
+  width: 100%;
+  padding: 10px 16px 10px 40px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  color: var(--text-primary);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s;
+  font-family: var(--body-font-family);
+}
+
+.nhl-rankings .filter-bar .search-box input:focus {
+  border-color: var(--gold);
+}
+
+.nhl-rankings .filter-bar .search-box input::placeholder {
+  color: var(--text-muted);
+}
+
+.nhl-rankings .filter-bar .search-box .search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 14px;
+  pointer-events: none;
+}
+
+.nhl-rankings .filter-bar select {
+  padding: 10px 32px 10px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  color: var(--text-primary);
+  font-size: 13px;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  min-width: 140px;
+  font-family: var(--body-font-family);
+}
+
+.nhl-rankings .filter-bar select:focus {
+  border-color: var(--gold);
+}
+
+.nhl-rankings .filter-bar .result-count {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.nhl-rankings .filter-bar .result-count span {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* view containers */
+.nhl-rankings .view-container {
+  display: none;
+  min-height: 400px;
+}
+
+.nhl-rankings .view-container.active {
+  display: block;
+}
+
+/* ==================== RANKINGS TABLE ==================== */
+.nhl-rankings .rankings-table-wrap {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+}
+
+.nhl-rankings .rankings-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.nhl-rankings .rankings-table thead th {
+  position: sticky;
+  top: 0;
+  background: var(--bg-deep);
+  padding: 12px 10px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  cursor: pointer;
+  user-select: none;
+  border-bottom: 2px solid var(--border-color);
+  transition: color 0.2s;
+  z-index: 2;
+}
+
+.nhl-rankings .rankings-table thead th:hover {
+  color: var(--gold);
+}
+
+.nhl-rankings .rankings-table thead th.sorted-asc,
+.nhl-rankings .rankings-table thead th.sorted-desc {
+  color: var(--gold);
+}
+
+.nhl-rankings .rankings-table thead th.sorted-asc::after {
+  content: ' \2191';
+}
+
+.nhl-rankings .rankings-table thead th.sorted-desc::after {
+  content: ' \2193';
+}
+
+.nhl-rankings .rankings-table tbody tr {
+  border-bottom: 1px solid var(--border-color);
+  transition: background 0.2s;
+  cursor: pointer;
+}
+
+.nhl-rankings .rankings-table tbody tr:hover {
+  background: var(--bg-hover);
+}
+
+.nhl-rankings .rankings-table tbody td {
+  padding: 10px;
+  color: var(--text-secondary);
+}
+
+.nhl-rankings .rankings-table tbody td.rank-col {
+  font-weight: 700;
+  color: var(--gold);
+  text-align: center;
+  width: 40px;
+}
+
+.nhl-rankings .rankings-table tbody td.player-col {
+  color: var(--text-primary);
+  font-weight: 600;
+  min-width: 160px;
+}
+
+.nhl-rankings .rankings-table tbody td.player-col .player-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nhl-rankings .rankings-table tbody td.player-col .player-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.nhl-rankings .rankings-table tbody td.player-col .player-info-cell {
+  display: flex;
+  flex-direction: column;
+}
+
+.nhl-rankings .rankings-table tbody td.player-col .player-info-cell .pname {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.nhl-rankings .rankings-table tbody td.player-col .player-info-cell .pteam {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.nhl-rankings .rankings-table tbody td.g-col {
+  color: var(--green);
+  font-weight: 600;
+}
+
+.nhl-rankings .rankings-table tbody td.a-col {
+  color: var(--blue);
+  font-weight: 600;
+}
+
+.nhl-rankings .rankings-table tbody td.pts-col {
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.nhl-rankings .rankings-table tbody td.pm-col.positive {
+  color: var(--green);
+}
+
+.nhl-rankings .rankings-table tbody td.pm-col.negative {
+  color: var(--red);
+}
+
+/* ==================== PLAYERS GRID ==================== */
+.nhl-rankings .players-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  padding: 8px 0;
+}
+
+.nhl-rankings .player-card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nhl-rankings .player-card:hover {
+  border-color: var(--border-color-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.nhl-rankings .player-card .card-accent {
+  height: 3px;
+  width: 100%;
+}
+
+.nhl-rankings .player-card .card-body {
+  padding: 16px;
+}
+
+.nhl-rankings .player-card .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.nhl-rankings .player-card .card-rank {
+  font-family: var(--heading-font-family);
+  font-size: 32px;
+  line-height: 1;
+  color: var(--gold);
+}
+
+.nhl-rankings .player-card .card-number {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.nhl-rankings .player-card .card-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.nhl-rankings .player-card .card-team {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.nhl-rankings .player-card .card-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.nhl-rankings .player-card .card-stat {
+  text-align: center;
+  padding: 8px 4px;
+  background: var(--bg-elevated);
+  border-radius: 8px;
+}
+
+.nhl-rankings .player-card .card-stat-value {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.nhl-rankings .player-card .card-stat-value.green {
+  color: var(--green);
+}
+
+.nhl-rankings .player-card .card-stat-value.blue {
+  color: var(--blue);
+}
+
+.nhl-rankings .player-card .card-stat-value.gold {
+  color: var(--gold);
+}
+
+.nhl-rankings .player-card .card-stat-label {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.nhl-rankings .player-card .card-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-color);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* ==================== TEAMS VIEW ==================== */
+.nhl-rankings .teams-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 8px 0;
+}
+
+.nhl-rankings .team-section {
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  background: var(--bg-card);
+}
+
+.nhl-rankings .team-section .team-header {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nhl-rankings .team-section .team-header .team-name {
+  font-family: var(--heading-font-family);
+  font-size: 24px;
+  letter-spacing: 2px;
+  color: var(--text-primary);
+}
+
+.nhl-rankings .team-section .team-header .team-count {
+  font-size: 12px;
+  color: var(--text-muted);
+  background: var(--bg-elevated);
+  padding: 4px 12px;
+  border-radius: 12px;
+}
+
+.nhl-rankings .team-section .team-players {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+  padding: 0 16px 16px;
+}
+
+.nhl-rankings .team-player-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: var(--bg-elevated);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+  border: 1px solid transparent;
+}
+
+.nhl-rankings .team-player-card:hover {
+  background: var(--bg-hover);
+  border-color: var(--border-color-hover);
+}
+
+.nhl-rankings .team-player-card .tp-rank {
+  font-family: var(--heading-font-family);
+  font-size: 24px;
+  color: var(--gold);
+  min-width: 30px;
+  text-align: center;
+}
+
+.nhl-rankings .team-player-card .tp-number {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.nhl-rankings .team-player-card .tp-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.nhl-rankings .team-player-card .tp-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 14px;
+}
+
+.nhl-rankings .team-player-card .tp-pos {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.nhl-rankings .team-player-card .tp-stats {
+  display: flex;
+  gap: 12px;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.nhl-rankings .team-player-card .tp-stats .tp-g {
+  color: var(--green);
+  font-weight: 600;
+}
+
+.nhl-rankings .team-player-card .tp-stats .tp-a {
+  color: var(--blue);
+  font-weight: 600;
+}
+
+.nhl-rankings .team-player-card .tp-stats .tp-p {
+  color: var(--gold);
+  font-weight: 700;
+}
+
+/* ==================== MODAL ==================== */
+.nhl-rankings .modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.nhl-rankings .modal-content {
+  background: var(--bg-card);
+  border-radius: 16px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  border: 1px solid var(--border-color);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.nhl-rankings .modal-hero {
+  padding: 24px;
+  position: relative;
+  border-radius: 16px 16px 0 0;
+}
+
+.nhl-rankings .modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(0, 0, 0, 0.4);
+  border: none;
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.nhl-rankings .modal-close:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.nhl-rankings .modal-hero .modal-rank {
+  font-family: var(--heading-font-family);
+  font-size: 48px;
+  line-height: 1;
+  color: white;
+  opacity: 0.9;
+}
+
+.nhl-rankings .modal-hero .modal-player-name {
+  font-size: 28px;
+  font-weight: 700;
+  color: white;
+  margin-top: 4px;
+}
+
+.nhl-rankings .modal-hero .modal-team-info {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 4px;
+}
+
+.nhl-rankings .modal-body {
+  padding: 24px;
+}
+
+.nhl-rankings .modal-bio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.nhl-rankings .modal-bio-item {
+  text-align: center;
+  padding: 10px;
+  background: var(--bg-elevated);
+  border-radius: 8px;
+}
+
+.nhl-rankings .modal-bio-item .bio-label {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.nhl-rankings .modal-bio-item .bio-value {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.nhl-rankings .modal-stats-title {
+  font-family: var(--heading-font-family);
+  font-size: 20px;
+  letter-spacing: 2px;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.nhl-rankings .modal-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 8px;
+}
+
+.nhl-rankings .modal-stat-item {
+  text-align: center;
+  padding: 12px 8px;
+  background: var(--bg-elevated);
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+}
+
+.nhl-rankings .modal-stat-item .stat-value {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.nhl-rankings .modal-stat-item .stat-value.green {
+  color: var(--green);
+}
+
+.nhl-rankings .modal-stat-item .stat-value.blue {
+  color: var(--blue);
+}
+
+.nhl-rankings .modal-stat-item .stat-value.gold {
+  color: var(--gold);
+}
+
+.nhl-rankings .modal-stat-item .stat-value.red {
+  color: var(--red);
+}
+
+.nhl-rankings .modal-stat-item .stat-label {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (width >= 600px) {
+  .nhl-rankings .players-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (width >= 900px) {
+  .nhl-rankings .players-grid {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  }
+}
+
+/* empty state */
+.nhl-rankings .empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+}
+
+.nhl-rankings .empty-state .empty-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.nhl-rankings .empty-state p {
+  font-size: 16px;
+  margin: 0;
+}
